@@ -2,7 +2,11 @@ import { wait } from "./utils.js";
 
 export async function orderPizza(topping) {
     await processOrder(topping);
-    return bakePizza(topping);
+
+    const pizza = await bakePizza(topping);
+    await deliver(pizza, topping);
+
+    return pizza;
 }
 
 async function processOrder(topping) {
@@ -30,4 +34,17 @@ async function bakePizza(topping) {
     }
 
     return `${topping} pizza`;
+}
+
+async function deliver(pizza, topping) {
+    console.log(`Delivering ${pizza}...`);
+    await wait(2000);
+
+    if (Math.random() < 0.67) {
+        console.log("Adrian stole and ate the pizza! Baking another one.");
+        const newPizza = await bakePizza(topping);
+        return deliver(newPizza, topping);
+    }
+
+    console.log(`${pizza} was delivered successfully!`);
 }
