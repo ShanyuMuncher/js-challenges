@@ -1,7 +1,0 @@
-Your task is to add a step in the orderPizza process for delivering the pizza.
-
-You do not have to use callbacks (phewww)
-
-You should create a function in each of the modules (promise-chaining.js and async-await.js) called deliverPizza(pizza) that returns a promise that resolves to the pizza when delivered.
-Add a standard delivery delay and a random chance of the delivery driver getting caught in traffic.
-
